@@ -56,8 +56,8 @@ brew install tree
 brew install yarn
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
+brew install ripgrep
 brew install fzf
-brew install the_silver_searcher
 brew install zsh
 brew install zsh-syntax-highlighting
 
