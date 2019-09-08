@@ -1,12 +1,14 @@
-# My dotfiles
-Everyone's got them.
+# DotFiles
 
-## Configuration
-Make bootstrap.sh executable
-`chmod +x boostrap.sh`
-## Usage
-Bootsrap application
-`./bootstrap.sh <#-of-dotfiles>`
-- #-of-dotfiles: specify the number of dotfiles you'd like to bootstrap
+## Requirements
 
- 
+Set zsh as your login shell:
+
+`chsh -s $(which zsh)`
+
+## Install
+
+`git clone git://github.com/cnnrrss/dotfiles.git ~/dotfiles`
+
+brew tap thoughtbot/formulae
+brew install rcm

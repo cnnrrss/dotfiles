@@ -1,40 +1,26 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-x=1
-count=${1:-10}
-separator='~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
-HASH='#'
+cd "$(dirname "${BASH_SOURCE}")";
 
-echo "${HASH} Bash version ${BASH_VERSION}..."
+git pull origin master;
 
-echo ${separator}
+function doIt() {
+	rsync --exclude ".git/" \
+		--exclude ".DS_Store" \
+		--exclude ".osx" \
+		--exclude "bootstrap.sh" \
+		--exclude "README.md" \
+		-avh --no-perms . ~;
+	source ~/.bash_profile;
+}
 
-echo "${HASH} Bootstraping dotfiles application"
-
-Sleep 1
-
-echo ${separator}
-
-echo "${HASH} Removing cached dotfiles"
-
-rm -rf files/*
-
-Sleep 1
-
-if [[ ${count} -gt 10 ]]; then echo ${separator} && echo "${HASH} Whoaa... this may take a while"; fi
-
-echo ${separator}
-
-# TODO: extract to a super cool function
-while [ $x -lt ${count} ]
-do
-	echo `date` "- Writing file_${x} to files/"
-	echo '.' >> files/file_${x}
-	x=$(( $x + 1 ))
-	Sleep 1
-done
-
-echo ${separator}
-echo "${HASH} Finished bootstrapping dotfiles. Happy Dotfiling!"
-echo "${HASH} License: Plz ask Connor Vanderhook"
-echo ${separator}
+if [ "$1" == "--force" -o "$1" == "-f" ]; then
+	doIt;
+else
+	read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
+	echo "";
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		doIt;
+	fi;
+fi;
+unset doIt;
