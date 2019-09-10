@@ -62,3 +62,12 @@ When setting up a new Mac, you may want to install some common Homebrew formulae
 
 `./brew.sh`
 
+### Download apps
+
+`./brew_cask.sh`
+
+**NOTE** It is a pain to use `brew cask install` for specific versions of apps. See your Dropbox for .dmg files of specific version apps.
+
+#### Stack
+Shell = ZSH
+
