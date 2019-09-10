@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Install Homebrew
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # Install command-line tools using Homebrew.
 
 # Make sure we’re using the latest Homebrew.
@@ -28,7 +31,6 @@ brew install gnu-sed --with-default-names
 brew install bash
 
 brew install bash-completion2
-
 
 # Switch to using brew-installed bash as default shell
 if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then
