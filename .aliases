@@ -15,9 +15,9 @@ alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
 alias g="git"
 
-# Overrides
-# alias python="python3"
-# alias pip="pip3"
+# Python Overrides
+alias python="python3"
+alias pip="pip3"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -29,7 +29,7 @@ else # macOS `ls`
 fi
 
 # List all files colorized in long format
-alias ll="ls -lF ${colorflag}"
+alias ll="ls -alF ${colorflag}"
 
 # List all files colorized in long format, excluding . and ..
 alias la="ls -lAF ${colorflag}"
