@@ -56,6 +56,7 @@ brew install jq
 brew install git
 brew install tree
 brew install yarn
+brew install python
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
 brew install ripgrep
