@@ -9,8 +9,10 @@ Shamelessly influenced by a much smarter programmer..
 If you wish, set zsh as your login shell:
 
 `chsh -s $(which zsh)`
+OR
+`sudo -s 'echo /usr/local/bin/zsh >> /etc/shells' && chsh -s /usr/local/bin/zsh`
 
-## Install
+## Install (for Bash)
 
 Using Git and the bootstrap script
 You can clone the repository wherever you want. (I like to keep it in ~/Projects/dotfiles, with ~/dotfiles as a symlink.) The bootstrapper script will pull in the latest version and copy the files to your home folder.
@@ -51,6 +53,8 @@ git config --global user.email "$GIT_AUTHOR_EMAIL"
 
 You could also use ~/.extra to override settings, functions and aliases from my dotfiles repository. It’s probably better to fork this repository instead, though.
 
+
+## For ZSH
 
 ### Sensible macOS defaults
 When setting up a new Mac, you may want to set some sensible macOS defaults:
