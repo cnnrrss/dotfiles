@@ -12,6 +12,7 @@ brew install brew-cask
 
 echo "Install Apps"
 
+brew cask install --appdir="~/Applications" anki
 brew cask install --appdir="~/Applications" alfred
 brew cask install --appdir="~/Applications" amphetamine
 brew cask install --appdir="~/Applications" google-chrome
@@ -27,11 +28,8 @@ brew cask install --appdir="~/Applications" sourcetree
 brew cask install --appdir="~/Applications" spotify
 brew cask install --appdir="~/Applications" sublime-text
 brew cask install --appdir="~/Applications" visual-studio-code
-# brew cask install --appdir="~/Applications" ideaIU-2017.3.7
 
+echo "cleaning up the Cellar"
 brew cleanup
-
-echo "Link apps to alfred"
-brew cask alfred link
 
 echo "done!"
