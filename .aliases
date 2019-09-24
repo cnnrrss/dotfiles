@@ -14,6 +14,7 @@ alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias g="git"
+alias activity="cat ~/.activity_log_file"
 
 # Python Overrides
 alias python="python3"
@@ -45,6 +46,9 @@ alias ls="command ls ${colorflag}"
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+
+# Top
+alias top="top -s1 -o cpu -R -F"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -150,6 +154,8 @@ alias reload="exec ${SHELL} -l"
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
+
+eval $(thefuck --alias)
 
 alias javav='/usr/libexec/java_home -V'
 alias java12='export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-12.0.2.jdk/Contents/Home'

@@ -1,5 +1,8 @@
 # If you come from bash you might have to change your $PATH.
+export GOPATH=/Users/cnnrrss/go
 export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH:$GOPATH/bin
+export ACTIVITY_LOG_FILE=/Users/cnnrrss/.activity_log_file
 
 # Setup Go Paths
 GO_TOOLS_PATH="/usr/local/Cellar/go/1.13/bin/go"
@@ -14,7 +17,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="clean"
+ZSH_THEME="theunraveler"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -32,7 +35,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git zsh-autosuggestions thefuck)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -61,6 +64,9 @@ setopt share_history
 
 # FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# TheFuck
+eval $(thefuck --alias fuck)
 
 # Usage: $ fzf
 

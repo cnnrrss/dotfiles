@@ -58,6 +58,7 @@ brew install tree
 brew install yarn
 brew install python
 brew install dep # yes, still not everyone on modules
+brew install thefuck
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
 brew install ripgrep
