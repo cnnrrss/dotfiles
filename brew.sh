@@ -52,18 +52,19 @@ brew install screen
 
 # Install other useful binaries.
 brew install ack
-brew install jq
+brew install jq       # json query
 brew install git
-brew install tree
+brew install tree     # display dir as a tree
 brew install yarn
 brew install python
-brew install dep # yes, still not everyone on modules
-brew install thefuck
+brew install dep      # yes, still not everyone on modules
+brew install thefuck  # utility to fix last run cmd
+brew install lynx     # terminal based web browser
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
-brew install ripgrep
-brew install fzf
-brew install zsh
+brew install ripgrep  # a better grep
+brew install fzf      # a fuzzy finder
+brew install zsh      # a better shell
 brew install zsh-syntax-highlighting
 
 # Remove outdated versions from the cellar.

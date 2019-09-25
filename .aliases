@@ -155,7 +155,8 @@ alias reload="exec ${SHELL} -l"
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
 
-eval $(thefuck --alias)
+# Open the ascii manual
+alias ascii="man ascii"
 
 alias javav='/usr/libexec/java_home -V'
 alias java12='export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-12.0.2.jdk/Contents/Home'
