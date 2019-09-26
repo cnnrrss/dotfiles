@@ -1,11 +1,8 @@
 {
-    "terminal.integrated.fontFamily": "Hack Nerd Font",
-    "terminal.integrated.shell.osx": "/usr/local/bin/zsh",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontSize": 12,
     "editor.renderWhitespace": "all",
-    "workbench.colorTheme": "Monokai Dimmed",
     "editor.formatOnPaste": true,
     "editor.multiCursorModifier": "ctrlCmd",
     // Intellisense
@@ -33,52 +30,17 @@
     "editor.parameterHints.enabled": true,
     "python.jediEnabled": false,
     "workbench.settings.editor": "json",
-    //
-    //
-    // Go Mod stuff
-    "go.toolsEnvVars": {
-        "GO111MODULE": "auto"
-    },
-    // "go.useLanguageServer": true,
-    // "go.alternateTools": {
-    //     "go-langserver": "gopls",
-    // },
-    "go.languageServerExperimentalFeatures": {
-        "format": true,
-        "autoComplete": true,
-        "diagnostics": true
-    },
-    //
-    //
-    "go.gopath": "/usr/local/Cellar/go",
-    "[go]": {
-        "editor.snippetSuggestions": "none",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-            "source.organizeImports": true
-        },
-    },
-    // 
-    // 
-    "go.autocompleteUnimportedPackages": true,
-    //
-    // 
-    // The "Unkown configuration setting" error is expected 
-    // "gopls": {
-    //     "usePlaceholders": true,
-    //     "enhancedHover": true
-    // },
-    // 
-    // 
     "window.zoomLevel": 0,
     "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "editor.fontSize": 12,
     "editor.snippetSuggestions": "top",
-    "leetcode.hint.configWebviewMarkdown": false,
-    "leetcode.hint.commentDescription": false,
-    "leetcode.defaultLanguage": "golang",
-    "go.formatTool": "goimports",
+    "go.formatTool": "gofmt", // goimports
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
+    "go.useLanguageServer": true,
+    "workbench.colorTheme": "Earthsong",
+    "workbench.colorCustomizations": {
+        "sideBar.background": "#36312C",
+        "statusBar.background": "#36312C"
+    }
 }

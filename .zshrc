@@ -1,6 +1,5 @@
 # If you come from bash you might have to change your $PATH.
 export GOPATH=/Users/cnnrrss/go
-export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$GOPATH/bin
 export ACTIVITY_LOG_FILE=/Users/cnnrrss/.activity_log_file
 
@@ -17,7 +16,7 @@ export ZSH=$HOME/.oh-my-zsh
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="theunraveler"
+ZSH_THEME="clean" # cypher, theunraveler
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -51,6 +50,7 @@ test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shel
 source /Users/cnnrrss/Projects/dotfiles/.aliases
 source /Users/cnnrrss/Projects/dotfiles/.functions
 source /Users/cnnrrss/Projects/dotfiles/.exports
+source /Users/cnnrrss/Projects/dotfiles/.secrets
 
 [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
 HISTSIZE=50000
@@ -101,3 +101,14 @@ eval $(thefuck --alias fuck)
 # unset **<TAB>
 # export **<TAB>
 # unalias **<TAB>
+#
+#  
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]]      && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/  local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/ local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh

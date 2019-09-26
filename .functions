@@ -1,5 +1,12 @@
 #!/usr/bin/env bash
 
+
+function devmux() {
+    tmux new-session -d 'vim'
+    tmux split-window -v 'htop'
+    tmux -2 attach-session -d
+}
+
 # Create a new directory and enter it
 function mkd() {
 	mkdir -p "$@" && cd "$_";
