@@ -1,11 +1,16 @@
 #!/usr/bin/env bash
 
-# Install some work specific brew tools
-brew install pandoc
-brew install kubectl
-brew install aws-sam-cli
-brew install upx      # zip file trimmer
-
 # Unsure
 brew install ncurses
 brew install moreutils
+
+# Install some work specific brew tools
+brew install pandoc
+brew install kubectl # Kubernetes tools
+brew install kustomize
+
+brew tap weaveworks/tap
+brew install weaveworks/tap/eksctl
+
+brew install aws-sam-cli # aws serverless
+brew install upx      # zip file trimmer

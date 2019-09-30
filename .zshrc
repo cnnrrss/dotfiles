@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 export GOPATH=/Users/cnnrrss/go
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$GOPATH/bin
+# Add Visual Studio Code (code)
+export VSCODEPATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH
 export ACTIVITY_LOG_FILE=/Users/cnnrrss/.activity_log_file
 
 # Setup Go Paths
