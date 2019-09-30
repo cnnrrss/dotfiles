@@ -49,23 +49,29 @@ brew install vim --with-override-system-vi
 brew install grep
 brew install openssh
 brew install screen
+brew install tmux
 
 # Install other useful binaries.
 brew install ack
 brew install jq       # json query
 brew install git
+brew install htop
 brew install tree     # display dir as a tree
 brew install yarn
 brew install python
 brew install dep      # yes, still not everyone on modules
 brew install thefuck  # utility to fix last run cmd
 brew install lynx     # terminal based web browser
+brew install upx      # zip file trimmer
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
 brew install ripgrep  # a better grep
 brew install fzf      # a fuzzy finder
 brew install zsh      # a better shell
 brew install zsh-syntax-highlighting
+
+# just for fun
+brew install shpotify
 
 # Remove outdated versions from the cellar.
 brew cleanup
