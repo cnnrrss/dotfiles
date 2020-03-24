@@ -1,13 +1,10 @@
-# Add `~/bin` to the `$PATH`
-export PATH="$HOME/bin:$PATH";
+# add my github
+ssh-add ~/.ssh/github-cnnrrss
 
-# Load the shell dotfiles, and then some:
-# * ~/.path can be used to extend `$PATH`.
-# * ~/.extra can be used for other settings you don’t want to commit.
-for file in ~/.{path,bash_prompt,exports,aliases,functions,extra}; do
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
-done;
-unset file;
+# Load shell dotfiles TODO symlink / organize
+source $HOME/Projects/dotfiles/.aliases
+source $HOME/Projects/dotfiles/.functions
+source $HOME/Projects/dotfiles/.exports
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
@@ -42,14 +39,6 @@ fi;
 # Iterm2
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-# User
-export MYPS='$(echo -n "${PWD/#$HOME/~}" | awk -F "/" '"'"'{
-if (length($0) > 14) { if (NF>4) print $1 "/" $2 "/.../" $(NF-1) "/" $NF;
-else if (NF>3) print $1 "/" $2 "/.../" $NF;
-else print $1 "/.../" $NF; }
-else print $0;}'"'"')'
-PS1='$(eval "echo ${MYPS}")$ '
-
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
@@ -59,3 +48,10 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+# Completion for AWS CLI
+complete -C aws_completer aws
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

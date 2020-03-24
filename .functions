@@ -176,3 +176,27 @@ function weather(){
             done
     fi
 }
+
+function gcommit() {
+    local c=$(git log --pretty=format:'%h' -n 1)
+    echo $c
+}
+
+function randline () {
+    integer z=$(wc -l <$1)
+    sed -n $[RANDOM % z + 1]p $1
+}
+
+function cntlm_off {
+  echo Turning cntlm proxy off
+  sed -i '' 's/^# NoProxy \*/NoProxy */' /usr/local/etc/cntlm.conf
+  sudo brew services stop cntlm
+  sudo brew services start cntlm
+}
+
+function cntlm_on {
+  echo Turning cntlm proxy on
+  sed -i '' 's/^NoProxy \*/# NoProxy */' /usr/local/etc/cntlm.conf
+  sudo brew services stop cntlm
+  sudo brew services start cntlm
+}

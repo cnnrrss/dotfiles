@@ -1,9 +1,17 @@
-# If you come from bash you might have to change your $PATH.
-export GOPATH=/Users/cnnrrss/go
-# Add Visual Studio Code (code)
-export VSCODEPATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH
-export ACTIVITY_LOG_FILE=/Users/cnnrrss/.activity_log_file
+ # If you come from bash you might have to change your $PATH.
+ export GOPATH=$HOME/go
+ # Add Visual Studio Code (code)
+ export VSCODEPATH="${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+ # Add pyenv Path
+ export PYENVPATH="${HOME}/.pyenv"
+ # NPM path
+ export NPMPATH=$HOME/.npm-packages/lib/node_modules
+ export NPM_CONFIG_PREFIX=$HOME/.npm-global
+ # Update Path
+ export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH:$PYENVPATH:$NPMPATH
+
+ # Pyenv
+ eval "$(pyenv init -)"
 
 # Setup Go Paths
 GO_TOOLS_PATH="/usr/local/Cellar/go/1.13/bin/go"
@@ -95,16 +103,16 @@ eval $(thefuck --alias fuck)
 # Can select multiple processes with <TAB> or <Shift-TAB> keys
 # kill -9 <TAB>
 
-# For ssh and telnet commands, extracted from /etc/hosts and ~/.ssh/config. 
+# For ssh and telnet commands, extracted from /etc/hosts and ~/.ssh/config.o
 # ssh **<TAB>
 # telnet **<TAB>
 
-# Env vars & aliases 
+# Env vars & aliases
 # unset **<TAB>
 # export **<TAB>
 # unalias **<TAB>
 #
-#  
+#
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]]      && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh

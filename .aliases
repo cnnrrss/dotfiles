@@ -7,17 +7,20 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
+alias fd="find"
 
-# Shortcuts
+# Git Shortcuts
 alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
 alias g="git"
+alias gs="git status"
+alias gl="git log"
 alias activity="cat ~/.activity_log_file"
 
 # Python Overrides
-alias python="python3"
+# alias python="python3"
 alias pip="pip3"
 
 # Detect which `ls` flavor is in use
@@ -158,6 +161,14 @@ alias path='echo -e ${PATH//:/\\n}'
 # Open the ascii manual
 alias ascii="man ascii"
 
+# Stay awake
+alias cafe="caffeinate"
+
+# Java
 alias javav='/usr/libexec/java_home -V'
 alias java12='export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-12.0.2.jdk/Contents/Home'
 alias java8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
+
+# IDEs
+alias goland='/usr/local/bin/goland'
+alias webstorm='/usr/local/bin/webstorm'

@@ -63,6 +63,7 @@ brew install dep      # yes, still not everyone on modules
 brew install thefuck  # utility to fix last run cmd
 brew install lynx     # terminal based web browser
 brew install hexyl    # cmd-line hex viewer
+brew install graphviz
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
 brew install ripgrep  # a better grep

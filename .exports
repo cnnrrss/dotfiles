@@ -3,7 +3,7 @@
 # Make vim the default editor.
 export EDITOR='vim';
 
-# My activity logs 
+# My activity logs
 export ACTIVITY_LOG_FILE=/Users/cnnrrss/.activity_log_file
 
 # Enable persistent REPL history for `node`.
