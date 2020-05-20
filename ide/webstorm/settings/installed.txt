@@ -1,0 +1,4 @@
+com.berzanmikaili.intellij.monokai_pro
+com.dubreuia
+com.wix.eslint
+mobi.hsz.idea.gitignore

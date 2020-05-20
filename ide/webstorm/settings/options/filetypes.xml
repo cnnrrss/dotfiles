@@ -1,0 +1,12 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <extensionMap>
+      <mapping pattern="environment" type="PLAIN_TEXT" />
+      <mapping pattern=".nycrc" type="PLAIN_TEXT" />
+      <mapping pattern="test" type="PLAIN_TEXT" />
+      <mapping pattern="environment-prod" type="PLAIN_TEXT" />
+      <mapping pattern=".gitkeep" type="PLAIN_TEXT" />
+      <mapping ext="db" type="PLAIN_TEXT" />
+    </extensionMap>
+  </component>
+</application>

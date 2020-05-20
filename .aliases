@@ -8,6 +8,12 @@ alias .....="cd ../../../.."
 alias ~="cd ~" # `cd` is probably faster to type though
 alias -- -="cd -"
 alias fd="find"
+alias h="history"
+alias vv="cd ~/Projects/voda/vfe"
+alias vva="cd ~/Projects/voda/vfe-aem"
+alias vvi="cd ~/Projects/voda/vfe-apis"
+alias vvv="cd ~/Projects/voda/vfe-vlocity"
+alias vvm="cd ~/Projects/voda/vfe-mulesoft"
 
 # Git Shortcuts
 alias d="cd ~/Documents/Dropbox"
@@ -17,6 +23,7 @@ alias p="cd ~/Projects"
 alias g="git"
 alias gs="git status"
 alias gl="git log"
+alias gca="git add . && git commit -m "
 alias activity="cat ~/.activity_log_file"
 
 # Python Overrides
@@ -33,7 +40,7 @@ else # macOS `ls`
 fi
 
 # List all files colorized in long format
-alias ll="ls -alF ${colorflag}"
+alias ll="ls -lA"
 
 # List all files colorized in long format, excluding . and ..
 alias la="ls -lAF ${colorflag}"
@@ -75,7 +82,7 @@ alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
-# View HTTP traffic
+# TODO: what kind of traffic?
 alias httpdump="sudo tcpdump -i en1 -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
 
 # Show active network interfaces
@@ -143,7 +150,7 @@ done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
-alias pumpitup="osascript -e 'set volume output volume 100'"
+alias pumpupthejam="osascript -e 'set volume output volume 80'"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description

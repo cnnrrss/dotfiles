@@ -1,5 +1,28 @@
 #!/usr/bin/env bash
 
+ # If you come from bash you might have to change your $PATH.
+ export GOPATH=$HOME/go
+ # Add Visual Studio Code (code)
+ export VSCODEPATH="${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+ # Add pyenv Path
+ export PYENVPATH="${HOME}/.pyenv"
+ # NPM path
+ export NPMPATH=$HOME/.npm-packages/lib/node_modules
+
+# ERROR nvm is not compatible with the "NPM_CONFIG_PREFIX" environment variable:
+# currently set to "$HOME/.npm-global"
+ # export NPM_CONFIG_PREFIX=$HOME/.npm-global
+
+ # Update Path
+ export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH:$PYENVPATH:$NPMPATH
+
+ # Setup Go Paths
+GO_TOOLS_PATH="/usr/local/Cellar/go/1.13/bin/go"
+if [ -d "$GO_TOOLS_PATH" ] ; then
+  PATH="$GO_TOOLS_PATH:$PATH"
+fi
+
+
 # Make vim the default editor.
 export EDITOR='vim';
 

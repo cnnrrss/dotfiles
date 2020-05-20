@@ -31,9 +31,8 @@
 
 # Logs and databases #
 ######################
-# *.log
-# *.sql
-# *.sqlite
+*.log
+*.sqlite
 
 # OS generated files #
 ######################
@@ -57,3 +56,7 @@ encodé.jade
 #############################################
 .Spotlight-V100
 .Trashes
+
+# Node, just ignore it #
+########################
+node_modules

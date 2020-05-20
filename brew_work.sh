@@ -12,5 +12,7 @@ brew install kustomize
 brew tap weaveworks/tap
 brew install weaveworks/tap/eksctl
 
-brew install aws-sam-cli # aws serverless
-brew install upx      # zip file trimmer
+brew install aws-sam-cli
+
+# zip file trimmer
+brew install upx

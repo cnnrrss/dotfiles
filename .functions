@@ -1,5 +1,81 @@
 #!/usr/bin/env bash
 
+function lfuncs() {
+	divider="============================================================================"
+	divider=$divider$divider
+
+	header="\n %-10s %-20s %s\n"
+	format=" %-10s %-20s %s\n"
+
+	width=75
+
+	printf "$header" "CMD" "ARGS" "DESCRIPTION"
+
+	printf "%$width.${width}s\n" "$divider"
+
+	printf "$format" \
+	devmux none  "Tmux a new htop session" \
+	mkd none "Create directory and enter it" \
+	fs "[dir|file]" "Print size of a file or total size of a dir" \
+	dataurl none "TODO: fix and document" \
+	server none "TODO: fix and document" \
+	gz file "Compare original and gzipped file size" \
+	getcerts "url" "Show all certs in SSL certificate" \
+	o "[loc|null]" "Opens dir or given location" \
+	tre "none" "Short for tree w/ color & hidden files" \
+	loopc "[delay] in sec" "E.g. loopc 5 echo 'foo'" \
+	fif "[dir]" "find string in folder" \
+	weather "[loc]" "Get weather for location" \
+	gcommit none "Get the last commit SHA" \
+	randline "[file]" "Get a random line from file" \
+	proxyon none "Turn work proxy on" \
+	proxyoff none "Turn work proxy off"
+}
+
+function laliases() {	hi
+	divider="============================================================================"
+	divider=$divider$divider
+
+	header="\n %-2s %s\n"
+	format=" %-25s %s\n"
+
+	width=75
+
+	printf "$header" "Alias" "DESCRIPTION"
+
+	printf "%$width.${width}s\n" "$divider"
+
+	printf "$format" \
+	".."  "E.g. do '..' instead of 'cd ..'" \
+	fd "Find command" \
+	h "Get formatted history of commands" \
+	d "Go to Dropbox folder" \
+	dl "Go to Downloads folder" \
+	dt "Go to Desktop folder" \
+	p "Go to Project folder" \
+	g "Git cmd shortened to 'g'" \
+	gca "Git add and git commit -m \$1" \
+	emptybin "Chuck the bin!" \
+	hidedesktop "Hide all desktop icons, useful when presenting" \
+	showdesktop "Restore all desktop icons" \
+	mergepdf "Usage: mergepdf input{1,2,3}.pdf" \
+	spotoff "Disable Spotlight" \
+	spoton "Enable Spotlight" \
+	map "Usage find . -name index.ts | map dirname" \
+	GET "LWP simple user agent E.g. GET google.com" \
+	stfu "Mute volume" \
+	pumpupthejam "Pump up the Jam" \
+	chromekill "Kill all the tabs in Chrome to free up memory" \
+	afk "Lock the screen when going away from the keys" \
+	reload "Reload the zshrc shell" \
+	path "Print each path entry on a separate line" \
+	ascii "Open the ascii manual, you know, to nerd out" \
+	cafe "caffeinate" \
+	javav "Get the java version" \
+	"java[0-9]{1,}" "Use an installed java version (probs 8 or 12)" \
+	goland  "Open dir or path in goland" \
+	webstorm  "Open dir or path in webstorm"
+}
 
 function devmux() {
     tmux new-session -d 'vim'
@@ -34,6 +110,7 @@ if [ $? -eq 0 ]; then
 	}
 fi;
 
+# TODO: fix this
 # Create a data URL from a file ex: data:text/plain;charset=utf-8;base64,IyBSZWNvbW1lb...
 function dataurl() {
 	local mimeType=$(file -b --mime-type "$1");
@@ -43,16 +120,15 @@ function dataurl() {
 	echo "data:${mimeType};base64,$(openssl base64 -in "$1" | tr -d '\n')";
 }
 
-# Start an HTTP server from a directory, optionally specifying the port
 # TODO: fix this
+# Start an HTTP server from a directory, optionally specifying the port
 function server() {
-	local port="${1:-8000}";
+	port="${1:-8000}";
 	sleep 1 && open "http://localhost:${port}/" &
 	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
 	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
 	python3 -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
 }
-
 
 # Compare original and gzipped file size
 function gz() {
@@ -63,14 +139,9 @@ function gz() {
 	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
 
-# Run `dig` and display the most useful info
-# function digga() {
-# 	dig +nocmd "$1" any +multiline +noall +answer;
-# }
-
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
-function getcertnames() {
+function getcerts() {
 	if [ -z "${1}" ]; then
 		echo "ERROR: No domain specified.";
 		return 1;
@@ -187,16 +258,42 @@ function randline () {
     sed -n $[RANDOM % z + 1]p $1
 }
 
-function cntlm_off {
-  echo Turning cntlm proxy off
-  sed -i '' 's/^# NoProxy \*/NoProxy */' /usr/local/etc/cntlm.conf
-  sudo brew services stop cntlm
-  sudo brew services start cntlm
+function proxyon {
+	# Set proxy system variables
+	http_proxy=$WORK_PROXY_URL
+    https_proxy=$WORK_PROXY_URL
+    no_proxy=localhost,127.0.0.1
+    HTTP_PROXY=$http_proxy
+    HTTPS_PROXY=$https_proxy
+
+    export http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY
+
+    # Git configuration for internet proxy
+    git config --global http.proxy $http_proxy
+    git config --global https.proxy $http_proxy
+
+    # ~/.curlrc
+    echo "proxy = ${http_proxy}" > ~/.curlrc
+
+    # ~/.npmrc
+    npm config set proxy $http_proxy
+
+    echo "Proxy is ON"
 }
 
-function cntlm_on {
-  echo Turning cntlm proxy on
-  sed -i '' 's/^NoProxy \*/# NoProxy */' /usr/local/etc/cntlm.conf
-  sudo brew services stop cntlm
-  sudo brew services start cntlm
+function proxyoff {
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
+
+	http_proxy=""
+	https_proxy=""
+    HTTP_PROXY=$http_proxy
+
+    export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+
+    echo "" > ~/.curlrc
+
+    npm config delete proxy
+
+    echo "Proxy is OFF"
 }

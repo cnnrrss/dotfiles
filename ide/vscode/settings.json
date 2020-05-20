@@ -1,4 +1,5 @@
 {
+    "workbench.colorTheme": "Monokai",
     "terminal.external.osxExec": "iTerm.app",
     "terminal.integrated.cursorBlinking": true,
     "terminal.integrated.fontSize": 12,
@@ -20,6 +21,7 @@
     "editor.suggestOnTriggerCharacters": true,
     // Controls if pressing tab inserts the best suggestion and if tab cycles through other suggestions
     "editor.tabCompletion": "on",
+    "editor.tabSize": 4,
     // Controls whether sorting favours words that appear close to the cursor
     "editor.suggest.localityBonus": true,
     // Controls how suggestions are pre-selected when showing the suggest list
@@ -30,17 +32,64 @@
     "editor.parameterHints.enabled": true,
     "python.jediEnabled": false,
     "workbench.settings.editor": "json",
-    "window.zoomLevel": 0,
+    "window.zoomLevel": -1,
     "editor.suggestSelection": "first",
     "editor.fontSize": 12,
     "editor.snippetSuggestions": "top",
-    "go.formatTool": "gofmt", // goimports
     "explorer.confirmDelete": false,
     "explorer.confirmDragAndDrop": false,
     "go.useLanguageServer": true,
-    "workbench.colorTheme": "Earthsong",
-    "workbench.colorCustomizations": {
-        "sideBar.background": "#36312C",
-        "statusBar.background": "#36312C"
-    }
+    "go.alternateTools": {
+        "go-langserver": "gopls"
+    },
+    "gopls": {
+        "usePlaceholders": true,
+        "enhancedHover": true
+    },
+    "go.languageServerExperimentalFeatures": {
+        "format": true,
+        "autoComplete": true,
+        // "rename": true,
+        // "goToDefinition": true,
+        // "hover": true,
+        // "signatureHelp": true,
+        // "goToTypeDefinition": true,
+        // "goToImplementation": true,
+        // "documentSymbols": true,
+        // "workspaceSymbols": true,
+        // "findReferences": true,
+        // "diagnostics": true,
+        // "documentLink": true
+    },
+    "[go]": {
+        "editor.snippetSuggestions": "none",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true
+        },
+    },
+    "[javascript]": {
+        "editor.formatOnSave": true
+    },
+    "go.formatTool": "goimports",
+    "go.lintTool": "golangci-lint",
+    "go.coverageDecorator": {
+        "type": "gutter"
+    },
+    "go.coverageOptions": "showUncoveredCodeOnly",
+    "go.coverOnTestPackage": true,
+    "go.coverOnSingleTest": false,
+    "go.testFlags": [
+        "-v",
+        "-cover",
+    ],
+    "go.testTimeout": "1m",
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true,
+        "editor.detectIndentation": true,
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2
+    },
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
