@@ -259,8 +259,8 @@ function randline () {
 }
 
 function proxyon {
-	# Set proxy system variables
-	http_proxy=$WORK_PROXY_URL
+    # Set proxy system variables
+    http_proxy=$WORK_PROXY_URL
     https_proxy=$WORK_PROXY_URL
     no_proxy=localhost,127.0.0.1
     HTTP_PROXY=$http_proxy
@@ -285,8 +285,8 @@ function proxyoff {
     git config --global --unset http.proxy
     git config --global --unset https.proxy
 
-	http_proxy=""
-	https_proxy=""
+    http_proxy=""
+    https_proxy=""
     HTTP_PROXY=$http_proxy
 
     export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
