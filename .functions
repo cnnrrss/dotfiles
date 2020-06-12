@@ -259,18 +259,17 @@ function randline () {
 }
 
 function proxyon {
-    # Set proxy system variables
-    http_proxy=$WORK_PROXY_URL
-    https_proxy=$WORK_PROXY_URL
+	# Set proxy system variables
+	http_proxy=$WORK_PROXY_URL
     no_proxy=localhost,127.0.0.1
     HTTP_PROXY=$http_proxy
-    HTTPS_PROXY=$https_proxy
 
-    export http_proxy https_proxy no_proxy HTTP_PROXY HTTPS_PROXY
+    export http_proxy
+    export no_proxy
+    export HTTP_PROXY
 
     # Git configuration for internet proxy
     git config --global http.proxy $http_proxy
-    git config --global https.proxy $http_proxy
 
     # ~/.curlrc
     echo "proxy = ${http_proxy}" > ~/.curlrc
@@ -283,13 +282,9 @@ function proxyon {
 
 function proxyoff {
     git config --global --unset http.proxy
-    git config --global --unset https.proxy
 
-    http_proxy=""
-    https_proxy=""
-    HTTP_PROXY=$http_proxy
-
-    export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+    unset http_proxy
+	unset HTTP_PROXY
 
     echo "" > ~/.curlrc
 
