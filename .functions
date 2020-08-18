@@ -29,7 +29,8 @@ function lfuncs() {
 	gcommit none "Get the last commit SHA" \
 	randline "[file]" "Get a random line from file" \
 	proxyon none "Turn work proxy on" \
-	proxyoff none "Turn work proxy off"
+	proxyoff none "Turn work proxy off" \
+	initauth "[env]" "Get a work accessToken" \
 }
 
 function laliases() {	hi

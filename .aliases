@@ -75,7 +75,7 @@ alias chrome='~/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 alias canary='~/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # Applications
-alias subl="~/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -179,3 +179,4 @@ alias java8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.j
 # IDEs
 alias goland='/usr/local/bin/goland'
 alias webstorm='/usr/local/bin/webstorm'
+
