@@ -26,10 +26,6 @@ alias gl="git log"
 alias gca="git add . && git commit -m "
 alias activity="cat ~/.activity_log_file"
 
-# Python Overrides
-# alias python="python3"
-alias pip="pip3"
-
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
@@ -179,4 +175,3 @@ alias java8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.j
 # IDEs
 alias goland='/usr/local/bin/goland'
 alias webstorm='/usr/local/bin/webstorm'
-

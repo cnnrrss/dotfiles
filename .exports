@@ -4,8 +4,6 @@
  export GOPATH=$HOME/go
  # Add Visual Studio Code (code)
  export VSCODEPATH="${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
- # Add pyenv Path
- export PYENVPATH="${HOME}/.pyenv"
  # NPM path
  export NPMPATH=$HOME/.npm-packages/lib/node_modules
 
@@ -14,14 +12,7 @@
  # export NPM_CONFIG_PREFIX=$HOME/.npm-global
 
  # Update Path
- export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH:$PYENVPATH:$NPMPATH
-
- # Setup Go Paths
-GO_TOOLS_PATH="/usr/local/Cellar/go/1.13/bin/go"
-if [ -d "$GO_TOOLS_PATH" ] ; then
-  PATH="$GO_TOOLS_PATH:$PATH"
-fi
-
+ export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH:$NPMPATH
 
 # Make vim the default editor.
 export EDITOR='vim';
