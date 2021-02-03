@@ -61,6 +61,8 @@ alias sudo='sudo '
 
 # Get week number
 alias week='date +%V'
+
+# datetime in utc
 alias utc='echo -e "$(date -u)"'
 
 # Get macOS Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
@@ -174,4 +176,5 @@ alias java8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.j
 
 # IDEs
 alias goland='/usr/local/bin/goland'
+alias intj='open -na "IntelliJ IDEA.app" --args'
 alias webstorm='/usr/local/bin/webstorm'

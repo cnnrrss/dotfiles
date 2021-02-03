@@ -37,7 +37,7 @@ function laliases() {	hi
 	divider="============================================================================"
 	divider=$divider$divider
 
-	header="\n %-2s %s\n"
+	header="\n %-10s %26s \n"
 	format=" %-25s %s\n"
 
 	width=75
@@ -59,6 +59,10 @@ function laliases() {	hi
 	emptybin "Chuck the bin!" \
 	hidedesktop "Hide all desktop icons, useful when presenting" \
 	showdesktop "Restore all desktop icons" \
+	week "URL-encode strings" \
+	utc "datetime in utc" \
+	ip "public ip" \
+	localip "local ip" \
 	mergepdf "Usage: mergepdf input{1,2,3}.pdf" \
 	spotoff "Disable Spotlight" \
 	spoton "Enable Spotlight" \
@@ -75,7 +79,39 @@ function laliases() {	hi
 	javav "Get the java version" \
 	"java[0-9]{1,}" "Use an installed java version (probs 8 or 12)" \
 	goland  "Open dir or path in goland" \
-	webstorm  "Open dir or path in webstorm"
+	webstorm  "Open dir or path in webstorm" \
+	intj  "Open dir or path in Intellij"
+}
+
+function lapps() {
+	divider="============================================================================"
+	divider=$divider$divider
+
+	header="\n %-10s %26s \n"
+	format=" %-25s %s\n"
+
+	width=75
+
+	printf "$header" "App" "DESCRIPTION"
+
+	printf "%$width.${width}s\n" "$divider"
+
+	printf "$format" \
+	cointop "crypto cli" \
+	mop "stonks cli" \
+	nbaconsole "nba cli" \
+	hugo "static site generator" \
+	scc "sloc cloc code" \
+	openapi-generator "generate api from swagger file" \
+	shpotify "spotify cli" \
+	serverless "framework for cloud" \
+	golangci-lint "lint go files" \
+	htop "system processes" \
+	asciinema "record and share terminal" \
+	tldr "community man page summaries" \
+	elasticdump "elasticsearch tool" \
+    "pip3 list" "ls python tools" \
+	"npm list -g --depth=0" "ls node tools"
 }
 
 function devmux() {
