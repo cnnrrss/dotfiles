@@ -80,7 +80,8 @@ function laliases() {	hi
 	"java[0-9]{1,}" "Use an installed java version (probs 8 or 12)" \
 	goland  "Open dir or path in goland" \
 	webstorm  "Open dir or path in webstorm" \
-	intj  "Open dir or path in Intellij"
+	intj  "Open dir or path in Intellij" \
+	solcjs "solidity (eth network) compiler"
 }
 
 function lapps() {
