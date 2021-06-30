@@ -10,13 +10,6 @@ alias -- -="cd -"
 alias fd="find"
 alias h="history"
 alias dme="cd ~/Projects/kablamo/dame"
-alias dmei="cd ~/Projects/kablamo/dame/dam-son-infra"
-alias dmea="cd ~/Projects/kablamo/dame/dam-son-api"
-alias dmeoa="cd ~/Projects/kablamo/dame/dam-son-auth"
-alias dmec="cd ~/Projects/kablamo/dame/dam-son-common"
-alias dmef="cd ~/Projects/kablamo/dame/dam-son-frontend"
-alias dmema="cd ~/Projects/kablamo/dame/dam-son-metadata-api"
-alias dmep="cd ~/Projects/kablamo/dame/dam-son-preprocess"
 
 # Git Shortcuts
 alias d="cd ~/Documents/Dropbox"
@@ -73,7 +66,7 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 
 # Google Chrome
 alias chrome='~/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-alias canary='~/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
+# alias canary='~/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # Applications
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -125,7 +118,10 @@ alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && 
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
 # URL-encode strings
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+alias urlencode='python3 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
+
+# Generate random uuid
+alias uuid='python3 -c "import uuid; print(uuid.uuid4())"'
 
 # Merge PDF files, preserving hyperlinks
 # Usage: `mergepdf input{1,2,3}.pdf`
@@ -172,12 +168,11 @@ alias ascii="man ascii"
 # Stay awake
 alias cafe="caffeinate"
 
-# Java
-alias javav='/usr/libexec/java_home -V'
-alias java12='export JAVA_HOME=/Library/Java/JavaVirtualMachines/openjdk-12.0.2.jdk/Contents/Home'
-alias java8='export JAVA_HOME=/Library/Java/JavaVirtualMachines/adoptopenjdk-8.jdk/Contents/Home'
-
 # IDEs
 alias goland='/usr/local/bin/goland'
 alias intj='open -na "IntelliJ IDEA.app" --args'
+alias pycharm='open -na "Pycharm.app" --args'
+alias dgrip='open -na "Datagrip.app" --args'
+alias clion='open -na "CLion.app" --args'
+alias pycharm='open -na "Pycharm.app" --args'
 alias webstorm='/usr/local/bin/webstorm'
