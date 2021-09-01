@@ -1,10 +1,6 @@
-# add my github
-ssh-add ~/.ssh/github-cnnrrss
-
-# Load shell dotfiles TODO symlink / organize
-source $HOME/Projects/dotfiles/.aliases
-source $HOME/Projects/dotfiles/.functions
-source $HOME/Projects/dotfiles/.exports
+# Set PATH
+export PATH="$HOME/bin:$PATH:/usr/local/bin/git"
+export GOPATH=$HOME/go
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
@@ -36,9 +32,6 @@ if type _git &> /dev/null; then
 	complete -o default -o nospace -F _git g;
 fi;
 
-# Iterm2
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
 # Add tab completion for SSH hostnames based on ~/.ssh/config, ignoring wildcards
 [ -e "$HOME/.ssh/config" ] && complete -o "default" -o "nospace" -W "$(grep "^Host" ~/.ssh/config | grep -v "[?*]" | cut -d " " -f2- | tr ' ' '\n')" scp sftp ssh;
 
@@ -53,5 +46,5 @@ complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes Syste
 complete -C aws_completer aws
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/Users/cnnrrss/.sdkman"
+[[ -s "/Users/cnnrrss/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/cnnrrss/.sdkman/bin/sdkman-init.sh"

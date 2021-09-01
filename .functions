@@ -286,7 +286,7 @@ function weather(){
     fi
 }
 
-function gcommit() {
+function ghash() {
     local c=$(git log --pretty=format:'%h' -n 1)
     echo $c
 }
@@ -329,4 +329,21 @@ function proxyoff {
     npm config delete proxy
 
     echo "Proxy is OFF"
+}
+
+function pulldir {
+    for d in *; do
+        cd $d && git pull && cd ..
+    done
+}
+
+function onvpn {
+	# get vpn state
+	# grep for state of the vpn
+	# take the first result
+	# take the 4th field as status. Ex: '  >> state: Connected'
+	/opt/cisco/anyconnect/bin/vpn state |\
+	grep '>> state' |\
+	head -1 |\
+	awk '{ print $4 }'
 }

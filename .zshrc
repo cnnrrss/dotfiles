@@ -1,17 +1,15 @@
  # Load shell dotfiles TODO symlink / organize
-source $HOME/Projects/dotfiles/.secrets
 source $HOME/Projects/dotfiles/.aliases
 source $HOME/Projects/dotfiles/.functions
 source $HOME/Projects/dotfiles/.exports
+source $HOME/Projects/dotfiles/.secrets # secrets should always be last
 
- # Pyenv
- eval "$(pyenv init -)"
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="clean" # cypher, theunraveler
+ZSH_THEME="apple" # clean, cypher, theunraveler
 
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
@@ -26,7 +24,6 @@ source $ZSH/oh-my-zsh.sh
 # Load Zsh tools for syntax highlighting and autosuggestions
 HOMEBREW_FOLDER="/usr/local/share"
 source "$HOMEBREW_FOLDER/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-# source "$HOMEBREW_FOLDER/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # User configuration
 test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
@@ -48,27 +45,14 @@ setopt share_history
 # TheFuck
 eval $(thefuck --alias fuck)
 
+# ----- NOT USING Kubectl Much these days
 # Kubectl completion
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 # AWS CLI completion
 source /usr/local/bin/aws_zsh_completer.sh
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]]      && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/  local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /usr/ local/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

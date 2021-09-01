@@ -1,18 +1,19 @@
 #!/usr/bin/env bash
 
- # If you come from bash you might have to change your $PATH.
- export GOPATH=$HOME/go
+# If you come from bash you might have to change your $PATH.
+export GOPATH=$HOME/go
+# Private go module stuff
+export GOPROXY=https://goproxy.io,direct
+export GOSUMDB=off
+
  # Add Visual Studio Code (code)
  export VSCODEPATH="${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
  # NPM path
- export NPMPATH=$HOME/.npm-packages/lib/node_modules
-
-# ERROR nvm is not compatible with the "NPM_CONFIG_PREFIX" environment variable:
-# currently set to "$HOME/.npm-global"
- # export NPM_CONFIG_PREFIX=$HOME/.npm-global
+#  export NPMPATH=$HOME/.npm-packages/lib/node_modules
 
  # Update Path
- export PATH=$HOME/bin:$PATH:$GOPATH/bin:$VSCODEPATH:$NPMPATH
+export PATH=$PATH:$GOPATH
+#  export PATH=$PATH:$VSCODEPATH:$NPMPATH
 
 # Make vim the default editor.
 export EDITOR='vim';
