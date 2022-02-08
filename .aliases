@@ -158,7 +158,7 @@ alias path='echo -e ${PATH//:/\\n}'
 alias cafe="caffeinate"
 
 # IDEs
-alias goland='/usr/local/bin/goland'
+alias goland='open -na "Goland.app" --args'
 alias intj='open -na "IntelliJ IDEA.app" --args'
 alias pycharm='open -na "Pycharm.app" --args'
 alias dgrip='open -na "Datagrip.app" --args'
