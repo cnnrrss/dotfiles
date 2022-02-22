@@ -14,6 +14,7 @@ function lfuncs() {
 	printf "%$width.${width}s\n" "$divider"
 
 	printf "$format" \
+	cheat "query" "curl cheat.sh a dev question" \
 	devmux none  "Tmux a new htop session" \
 	mkd none "Create directory and enter it" \
 	fs "[dir|file]" "Print size of a file or total size of a dir" \
@@ -104,7 +105,7 @@ function lapps() {
 	hugo "static site generator" \
 	scc "sloc cloc code" \
 	openapi-generator "generate api from swagger file" \
-	shpotify "spotify cli" \
+	spotify "spotify cli" \
 	serverless "framework for cloud" \
 	golangci-lint "lint go files" \
 	htop "system processes" \
@@ -285,6 +286,22 @@ function weather(){
             done
     fi
 }
+
+# Curl the weather in a specific location
+# Example: weather Sydney
+function cheat(){
+    if [ "$#" -lt 1 ]
+    then
+      echo "Usage:  cheat some words to write"
+    else
+		local query=$(join_by + "$@")
+		echo "Cheating: ${query}"
+		curl cheat.sh/${query}
+    fi
+}
+
+# https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
+function join_by { local IFS="$1"; shift; echo "$*"; }
 
 function ghash() {
     local c=$(git log --pretty=format:'%h' -n 1)
