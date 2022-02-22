@@ -57,7 +57,6 @@ brew install htop
 brew install tree     # display dir as a tree
 brew install yarn
 brew install python
-brew install dep      # yes, still not everyone on modules
 brew install thefuck  # utility to fix last run cmd
 brew install lynx     # terminal based web browser
 brew install hexyl    # cmd-line hex viewer
