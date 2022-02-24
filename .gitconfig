@@ -1,6 +1,6 @@
 [user]
 
-    name = "Connor Vanderhook" 
+	name = "Connor Vanderhook" 
 	email = 14183191+cnnrrss@users.noreply.github.com
 	signingkey = D045C02345FB5086
 
@@ -9,10 +9,10 @@
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	l = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-    # Commit all changes
+	# Commit all changes
 	ca = !git add -A && git commit -av
 
-    # Show verbose output about tags, branches or remotes
+	# Show verbose output about tags, branches or remotes
 	tags = tag -l
 	branches = branch -a
 	remotes = remote -v
@@ -23,7 +23,7 @@
 	# Amend the currently staged files to the latest commit
 	amend = commit --amend --reuse-message=HEAD
 
-    # Remove branches that have already been merged with master
+	# Remove branches that have already been merged with master
 	# a.k.a. ‘delete merged’
 	dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d"
 
@@ -37,52 +37,52 @@
 
 [color]
 
-    ui = true
+	ui = true
 
 [help]
 
-    autocorrect = 1
+	autocorrect = 1
 
 [pull]
-    
-    rebase = false
+
+	rebase = false
 
 [core]
 
-    editor = vim
-    pager = delta
-    excludesfile = ~/.gitignore_global
+	editor = vim
+	pager = delta
+	excludesfile = ~/.gitignore_global
 
 [delta]
-    
-    side-by-side = true
-    line-numbers = true
-    plus-style = syntax "#003800"
-    minus-style = syntax "#3f0001"
-    #hunk-header-style = omit
+
+	side-by-side = true
+	line-numbers = true
+	plus-style = syntax "#003800"
+	minus-style = syntax "#3f0001"
+	#hunk-header-style = omit
 
 [delta "line-numbers"]
 
-    line-numbers-left-style = cyan
-    line-numbers-right-style = cyan
-    line-numbers-minus-style = 124
-    line-numbers-plus-style = 28
+	line-numbers-left-style = cyan
+	line-numbers-right-style = cyan
+	line-numbers-minus-style = 124
+	line-numbers-plus-style = 28
 
 [interactive]
-    
-    diffFilter = delta --color-only
+
+	diffFilter = delta --color-only
 
 [diff]
 
-    tool = delta 
+	tool = delta
 
 [difftool]
-    
-    prompt = false
+
+	prompt = false
 
 [init]
-    
-    defaultBranch = main
+
+	defaultBranch = main
 
 [url "git@github.com:"]
 
@@ -106,4 +106,4 @@
 
 [includeIf "gitdir:~/Projects/abc/"]
 
-    path = ~/.abc.gitconfig
+	path = ~/.abc.gitconfig
