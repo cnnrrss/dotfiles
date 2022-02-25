@@ -19,6 +19,10 @@ alias gl="git log"
 alias gca="git add . && git commit -m "
 alias activity="cat ~/.activity_log_file"
 
+# Node / NPM Shortcuts
+# List all globally installed npm packages
+alias npml="npm ls -g --depth 0"
+
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
 	colorflag="--color"
