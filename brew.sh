@@ -71,6 +71,7 @@ brew install zsh-syntax-highlighting
 
 # just for fun
 brew install shpotify
+brew install wifi-password
 
 # Remove outdated versions from the cellar.
 brew cleanup
