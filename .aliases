@@ -5,7 +5,11 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-alias fd="find"
+# Installed fd instead!
+# alias fd="find"
+
+alias '**'="fzf"
+
 alias h="history"
 
 # Git Shortcuts
@@ -160,6 +164,9 @@ alias path='echo -e ${PATH//:/\\n}'
 
 # Stay awake
 alias cafe="caffeinate"
+
+# Cheat.sh
+alias cheat="cht.sh"
 
 # IDEs
 alias goland='open -na "Goland.app" --args'
