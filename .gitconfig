@@ -30,6 +30,8 @@
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
+     hash = rev-parse --short HEAD
+
 [apply]
 
 	# Detect whitespace errors when applying a patch
@@ -103,7 +105,3 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
-
-[includeIf "gitdir:~/Projects/abc/"]
-
-	path = ~/.abc.gitconfig
