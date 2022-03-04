@@ -162,11 +162,11 @@ function dataurl() {
 # TODO: fix this
 # Start an HTTP server from a directory, optionally specifying the port
 function server() {
-	port="${1:-8000}";
-	sleep 1 && open "http://localhost:${port}/" &
-	# Set the default Content-Type to `text/plain` instead of `application/octet-stream`
-	# And serve everything as UTF-8 (although not technically correct, this doesn’t break anything for binary files)
-	python3 -c $'import SimpleHTTPServer;\nmap = SimpleHTTPServer.SimpleHTTPRequestHandler.extensions_map;\nmap[""] = "text/plain";\nfor key, value in map.items():\n\tmap[key] = value + ";charset=UTF-8";\nSimpleHTTPServer.test();' "$port";
+	local port="${1:-8000}";
+	local uri="http://localhost:${port}/"
+
+	sleep 1 && echo -e "listnening on ${uri}\n" && open "http://localhost:${port}/" &
+	python -m http.server "${port}"
 }
 
 # Compare original and gzipped file size
@@ -287,26 +287,30 @@ function weather(){
     fi
 }
 
-# Curl the weather in a specific location
-# Example: weather Sydney
-function cheat(){
-    if [ "$#" -lt 1 ]
-    then
-      echo "Usage:  cheat some words to write"
-    else
-		local query=$(join_by + "$@")
-		echo "Cheating: ${query}"
-		curl cheat.sh/${query}
-    fi
-}
+# Cheat.sh
+# Not actually necessary, turns out there is a client app with more features
+# https://github.com/chubin/cheat.sh#installation
+############################################################################
+
+# function cheat(){
+#     if [ "$#" -lt 1 ]
+#     then
+#       echo "Usage:  cheat some words to write"
+#     else
+# 		local query=$(join_by + "$@")
+# 		echo "Cheating: ${query}"
+# 		curl cheat.sh/${query}
+#     fi
+# }
 
 # https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-function ghash() {
-    local c=$(git log --pretty=format:'%h' -n 1)
-    echo $c
-}
+# Moved to .gitconfig.aliases
+# function ghash() {
+#     local c=$(git log --pretty=format:'%h' -n 1)
+#     echo $c
+# }
 
 function randline () {
     integer z=$(wc -l <$1)
@@ -354,13 +358,17 @@ function pulldir {
     done
 }
 
-function onvpn {
-	# get vpn state
-	# grep for state of the vpn
-	# take the first result
-	# take the 4th field as status. Ex: '  >> state: Connected'
-	/opt/cisco/anyconnect/bin/vpn state |\
-	grep '>> state' |\
-	head -1 |\
-	awk '{ print $4 }'
+# FZF
+#
+# Inspired by: https://github.com/samoshkin/dotfiles/blob/master/zsh/scripts/fzf.sh
+###################################################################################
+
+# Pass selected files as arguments to the given command
+# Usage: f echo
+# Usage: f vim
+function f {
+  IFS=$'\n'
+  files=($(fd . --type f --type l "${@:2}" | fzf -0 -1 -m))
+  IFS=$' '
+  [[ -n "$files" ]] && $1 "${files[@]}"
 }
