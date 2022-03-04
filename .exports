@@ -2,21 +2,18 @@
 
 # If you come from bash you might have to change your $PATH.
 export GOPATH=$HOME/go
+ # Update Path
+# export PATH=$PATH:$GOPATH
 # Private go module stuff
 export GOPROXY=https://goproxy.io,direct
 export GOSUMDB=off
 
  # Add Visual Studio Code (code)
  export VSCODEPATH="${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
- # NPM path
+
+# NPM path
 #  export NPMPATH=$HOME/.npm-packages/lib/node_modules
-
- # Update Path
-export PATH=$PATH:$GOPATH
 #  export PATH=$PATH:$VSCODEPATH:$NPMPATH
-
-# Make vim the default editor.
-export EDITOR='vim';
 
 # My activity logs
 export ACTIVITY_LOG_FILE=/Users/cnnrrss/.activity_log_file
