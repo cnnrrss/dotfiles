@@ -62,6 +62,7 @@ brew install lynx     # terminal based web browser
 brew install hexyl    # cmd-line hex viewer
 brew install graphviz
 brew install hyperfine
+brew install rlwrap   # required for cmd line cheat.sh https://github.com/hanslub42/rlwrap
 
 # Install interactive unix cl filter to be used with list; files, history, processes, hostnames, bookmarks, git commits, etc.
 brew install ripgrep  # a better grep
