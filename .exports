@@ -8,9 +8,6 @@ export GOPATH=$HOME/go
 export GOPROXY=https://goproxy.io,direct
 export GOSUMDB=off
 
- # Add Visual Studio Code (code)
- export VSCODEPATH="${HOME}/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-
 # NPM path
 #  export NPMPATH=$HOME/.npm-packages/lib/node_modules
 #  export PATH=$PATH:$VSCODEPATH:$NPMPATH
