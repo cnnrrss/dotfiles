@@ -32,6 +32,10 @@ function lfuncs() {
 	proxyon none "Turn work proxy on" \
 	proxyoff none "Turn work proxy off" \
 	initauth "[env]" "Get a work accessToken" \
+    uuid none "Print a uuid v4 to stdout" \
+    walkdir "[path]" "walk the dir and print the filepath" \
+    whoseport "[port]" "see what process is running on a given port" \
+    titlecase "[string]" "change the string to titlecase"
 }
 
 function laliases() {	hi
@@ -169,6 +173,10 @@ function server() {
 	python -m http.server "${port}"
 }
 
+function uuid() {
+    python -c "import uuid;id=uuid.uuid4();print(id)" 
+}
+
 # Compare original and gzipped file size
 function gz() {
 	local origsize=$(wc -c < "$1");
@@ -274,7 +282,7 @@ function fif() {
 
 # Curl the weather in a specific location
 # Example: weather Sydney
-function weather(){
+function weather() {
     if [ "$#" -lt 1 ]
     then
       echo "Usage:  weather sydney"
@@ -286,22 +294,6 @@ function weather(){
             done
     fi
 }
-
-# Cheat.sh
-# Not actually necessary, turns out there is a client app with more features
-# https://github.com/chubin/cheat.sh#installation
-############################################################################
-
-# function cheat(){
-#     if [ "$#" -lt 1 ]
-#     then
-#       echo "Usage:  cheat some words to write"
-#     else
-# 		local query=$(join_by + "$@")
-# 		echo "Cheating: ${query}"
-# 		curl cheat.sh/${query}
-#     fi
-# }
 
 # https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
 function join_by { local IFS="$1"; shift; echo "$*"; }
@@ -372,3 +364,17 @@ function f {
   IFS=$' '
   [[ -n "$files" ]] && $1 "${files[@]}"
 }
+
+function walkdir() {
+    find . -print0 | while IFS= read -r -d '' file
+    do
+        echo "$file"
+    done
+}
+
+function whoseport() { lsof -i ":$1" | grep LISTEN }
+
+function titlecase() {
+    echo "$1" | sed 's/[^ ]\+/\L\u&/g' 
+}
+
