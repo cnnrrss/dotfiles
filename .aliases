@@ -5,15 +5,13 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-# Installed fd instead!
-# alias fd="find"
 
 alias '**'="fzf"
 
 alias h="history"
 
 # Git Shortcuts
-alias d="cd ~/Documents/Dropbox"
+# alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/Projects"
@@ -21,20 +19,16 @@ alias g="git"
 alias gs="git status"
 alias gl="git log"
 alias gca="git add . && git commit -m "
-alias activity="cat ~/.activity_log_file"
+
+alias python=/usr/bin/python3
+alias pip=/usr/bin/pip3
+
+# Tailscale
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
 
 # Node / NPM Shortcuts
 # List all globally installed npm packages
 alias npml="npm ls -g --depth 0"
-
-# Detect which `ls` flavor is in use
-if ls --color > /dev/null 2>&1; then # GNU `ls`
-	colorflag="--color"
-	export LS_COLORS='no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
-else # macOS `ls`
-	colorflag="-G"
-	export LSCOLORS='BxBxhxDxfxhxhxhxhxcxcx'
-fi
 
 # List all files colorized in long format
 alias ll="ls -al"
@@ -55,7 +49,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Top
-alias top="top -s1 -o cpu -R -F"
+# alias top="top -s1 -o cpu -R -F"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
@@ -70,11 +64,8 @@ alias utc='echo -e "$(date -u)"'
 alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm install npm -g; npm update -g; sudo gem update --system; sudo gem update; sudo gem cleanup'
 
 # Google Chrome
-alias chrome='~/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+# alias chrome='~/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
 # alias canary='~/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
-
-# Applications
-alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -91,7 +82,7 @@ alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'
 alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
-alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
+# alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
@@ -121,19 +112,20 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 alias urlencode='python3 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
 
 # Generate random uuid
-alias uuid='python3 -c "import uuid; print(uuid.uuid4())"'
+# alias uuid='python3 -c "import uuid; print(uuid.uuid4())"'
 
 # Merge PDF files, preserving hyperlinks
 # Usage: `mergepdf input{1,2,3}.pdf`
-alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
+# alias mergepdf='gs -q -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=_merged.pdf'
 
 # Disable Spotlight
 alias spotoff="sudo mdutil -a -i off"
+
 # Enable Spotlight
 alias spoton="sudo mdutil -a -i on"
 
 # Airport CLI alias
-alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
+# alias airport='/System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport'
 
 # Intuitive map function
 # For example, to list all directories that contain a certain file:
@@ -146,12 +138,12 @@ for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
-alias stfu="osascript -e 'set volume output muted true'"
-alias pumpupthejam="osascript -e 'set volume output volume 80'"
+# alias stfu="osascript -e 'set volume output muted true'"
+# alias pumpupthejam="osascript -e 'set volume output volume 80'"
 
 # Kill all the tabs in Chrome to free up memory
 # [C] explained: http://www.commandlinefu.com/commands/view/402/exclude-grep-from-your-grepped-output-of-ps-alias-included-in-description
-alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
+# alias chromekill="ps ux | grep '[C]hrome Helper --type=renderer' | grep -v extension-process | tr -s ' ' | cut -d ' ' -f2 | xargs kill"
 
 # Lock the screen (when going AFK)
 alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
@@ -170,10 +162,24 @@ alias cheat="cht.sh"
 
 # IDEs
 alias goland='open -na "Goland.app" --args'
-alias intj='open -na "IntelliJ IDEA.app" --args'
+alias webstorm='open -na "Webstorm.app" --args'
 alias pycharm='open -na "Pycharm.app" --args'
-alias dgrip='open -na "Datagrip.app" --args'
-alias clion='open -na "CLion.app" --args'
-alias pycharm='open -na "Pycharm.app" --args'
-alias webstorm='/usr/local/bin/webstorm'
+alias appcode='open -na Appcode.app --args'
+alias subl='open -na "Sublime Text.app"'
+
+# Curl with Proxy
 alias curlp='curl --proxy http://127.0.0.1:8080'
+
+alias pbcopy="tr -d '\n' | pbcopy"
+
+# Many-repo stuff
+alias gpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git pull --rebase\" \;"
+alias backtomainandgpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git checkout main && git pull --rebase\" \;"
+alias backtomasterandgpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git checkout master && git pull --rebase\" \;"
+alias alldeps="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && go get -u ./... && go mod vendor && git add . && git commit -m \"vendor\" && git push\" \;"
+alias gpusall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git push\" \;"
+alias gotestall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && go clean -testcache && go test -p 1 --tags integration ./...\" \;"
+
+# Docker-compose stuff
+alias dcup="docker-compose up -d"
+alias dcdown="docker-compose down"
