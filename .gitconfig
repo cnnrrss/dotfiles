@@ -30,7 +30,10 @@
 	# List contributors with number of commits
 	contributors = shortlog --summary --numbered
 
-     hash = rev-parse --short HEAD
+    hash = rev-parse --short HEAD
+
+    # Diff staged
+    ds = diff -c HEAD
 
 [apply]
 
@@ -105,3 +108,7 @@
 [url "git://gist.github.com/"]
 
 	insteadOf = "gist:"
+
+[push]
+
+    autoSetupRemote = true
