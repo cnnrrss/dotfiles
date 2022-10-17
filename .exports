@@ -3,7 +3,8 @@
 # If you come from bash you might have to change your $PATH.
 export GOPATH=$HOME/go
  # Update Path
-# export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
+
 # Private go module stuff
 export GOPROXY=https://goproxy.io,direct
 export GOSUMDB=off
