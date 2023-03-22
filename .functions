@@ -379,3 +379,15 @@ function titlecase() {
     echo "$1" | sed 's/[^ ]\+/\L\u&/g' 
 }
 
+awslogs() {
+      export AWS_PROFILE=$(cat ~/.aws/config | awk '/^\[profile /{print $2}' | tr -d ']' | fzf)
+      local log_group=$(aws logs describe-log-groups | gojq -r '.logGroups[].logGroupName' | fzf)
+      aws logs tail "$log_group" --since 3h --follow --format=short
+}
+
+
+export WORKSPACE_ROOT="$HOME/Projects"
+function ws() {
+      cd "$WORKSPACE_ROOT/`ls -a $WORKSPACE_ROOT | fgrep -v .DS_Store | fzf --preview '(cd $WORKSPACE_ROOT/{1}; pwd; tree -C -L 1 -I node_modules -I .DS_Store)'`"
+}
+

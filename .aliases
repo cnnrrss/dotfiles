@@ -180,3 +180,7 @@ alias gotestall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '
 # Docker-compose stuff
 alias dcup="docker-compose up -d"
 alias dcdown="docker-compose down"
+
+# FZF
+alias fzp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --border --height='80%'"
+
