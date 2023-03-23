@@ -299,12 +299,6 @@ function weather() {
 # https://stackoverflow.com/questions/1527049/how-can-i-join-elements-of-an-array-in-bash
 function join_by { local IFS="$1"; shift; echo "$*"; }
 
-# Moved to .gitconfig.aliases
-# function ghash() {
-#     local c=$(git log --pretty=format:'%h' -n 1)
-#     echo $c
-# }
-
 function randline () {
     integer z=$(wc -l <$1)
     sed -n $[RANDOM % z + 1]p $1
@@ -391,3 +385,8 @@ function ws() {
       cd "$WORKSPACE_ROOT/`ls -a $WORKSPACE_ROOT | fgrep -v .DS_Store | fzf --preview '(cd $WORKSPACE_ROOT/{1}; pwd; tree -C -L 1 -I node_modules -I .DS_Store)'`"
 }
 
+function lpassget() {
+    local _raw=$(lpass show "$1" --json | jq -r '.[0]')
+    echo "Copied password to clipboard:\n$(jq -r '.name,.id' <<< "$_raw")"
+    echo "$(jq -r '.password' <<< "$_raw")" | pbcopy
+}
