@@ -178,6 +178,10 @@ function uuid() {
     python -c "import uuid;id=uuid.uuid4();print(id)" 
 }
 
+function jsonstrip() {
+    python -c "import json;print(json.dumps(json.loads('$1')))"
+}
+
 # Compare original and gzipped file size
 function gz() {
 	local origsize=$(wc -c < "$1");
@@ -247,7 +251,7 @@ function o() {
 # `less` with options to preserve color and line numbers, unless the output is
 # small enough for one screen.
 function tre() {
-	tree -aC -I '.git|node_modules' --dirsfirst "$@" | less -FRNX;
+	tree -aC -I '.git|node_modules|vendor' --dirsfirst "$@" | less -FRNX;
 }
 
 # Run a command repeatedly in a loop, with a delay (defaults to 1 sec).
@@ -385,8 +389,7 @@ function ws() {
       cd "$WORKSPACE_ROOT/`ls -a $WORKSPACE_ROOT | fgrep -v .DS_Store | fzf --preview '(cd $WORKSPACE_ROOT/{1}; pwd; tree -C -L 1 -I node_modules -I .DS_Store)'`"
 }
 
-function lpassget() {
-    local _raw=$(lpass show "$1" --json | jq -r '.[0]')
-    echo "Copied password to clipboard:\n$(jq -r '.name,.id' <<< "$_raw")"
-    echo "$(jq -r '.password' <<< "$_raw")" | pbcopy
+function gocover() {
+    t="/tmp/go-cover.$$.tmp"
+    go test -coverprofile=$t $@ && go tool cover -html=$t && unlink $t
 }
