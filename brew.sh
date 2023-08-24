@@ -76,3 +76,6 @@ brew install wifi-password
 
 # Remove outdated versions from the cellar.
 brew cleanup
+
+# Personal stuff
+brew install 1password-cli
