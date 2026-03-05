@@ -1,6 +1,6 @@
 # Set PATH
-export PATH="$HOME/bin:$PATH:/usr/local/bin/git"
-export GOPATH=$HOME/go
+# export PATH="$HOME/bin:$PATH:/usr/local/bin/git"
+# export GOPATH=$HOME/go
 
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;

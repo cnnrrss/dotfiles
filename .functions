@@ -393,3 +393,7 @@ function gocover() {
     t="/tmp/go-cover.$$.tmp"
     go test -coverprofile=$t $@ && go tool cover -html=$t && unlink $t
 }
+
+function ulid() {
+    python -c "from ulid import ULID;import time, datetime;print(ULID.from_timestamp(time.time()))"
+}

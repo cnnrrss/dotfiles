@@ -20,12 +20,6 @@ alias gs="git status"
 alias gl="git log"
 alias gca="git add . && git commit -m "
 
-alias python=/usr/bin/python3
-alias pip=/usr/bin/pip3
-
-# Tailscale
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-
 # Node / NPM Shortcuts
 # List all globally installed npm packages
 alias npml="npm ls -g --depth 0"
@@ -65,7 +59,6 @@ alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup
 
 # Google Chrome
 # alias chrome='~/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
-# alias canary='~/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
@@ -85,13 +78,13 @@ alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
 # alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder
 
 # Canonical hex dump; some systems have this symlinked
-command -v hd > /dev/null || alias hd="hexdump -C"
+command -v hd >/dev/null || alias hd="hexdump -C"
 
 # macOS has no `md5sum`, so use `md5` as a fallback
-command -v md5sum > /dev/null || alias md5sum="md5"
+command -v md5sum >/dev/null || alias md5sum="md5"
 
 # macOS has no `sha1sum`, so use `shasum` as a fallback
-command -v sha1sum > /dev/null || alias sha1sum="shasum"
+command -v sha1sum >/dev/null || alias sha1sum="shasum"
 
 # Trim new lines and copy to clipboard
 alias c="tr -d '\n' | pbcopy"
@@ -132,7 +125,7 @@ alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
-	alias "${method}"="lwp-request -m '${method}'"
+  alias "${method}"="lwp-request -m '${method}'"
 done
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
@@ -160,10 +153,14 @@ alias cheat="cht.sh"
 
 # IDEs
 alias goland='open -na "Goland.app" --args'
+alias rubym='open -na "RubyMine.app" --args'
 alias webstorm='open -na "Webstorm.app" --args'
-alias pycharm='open -na "Pycharm.app" --args'
-alias appcode='open -na Appcode.app --args'
-alias subl='open -na "Sublime Text.app"'
+alias subl='open -na "Sublime Text 2.app" --args'
+alias idea='open -na "IntelliJ IDEA.app" --args'
+
+# Tmux
+alias tmuxd='tmux detach'
+alias tmuxa='tmux attach'
 
 # Curl with Proxy
 alias curlp='curl --proxy http://127.0.0.1:8080'
@@ -171,7 +168,7 @@ alias curlp='curl --proxy http://127.0.0.1:8080'
 alias pbcopy="tr -d '\n' | pbcopy"
 
 # Many-repo stuff
-alias gpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git pull --rebase\" \;"
+alias gpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c 'cd \"{}\" && echo \"=== \$(basename \"{}\") ===\" && git stash && git pull --rebase && git stash pop || true' \;"
 alias backtomainandgpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git checkout main && git pull --rebase\" \;"
 alias backtomasterandgpulall="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && git checkout master && git pull --rebase\" \;"
 alias alldeps="find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c \"cd '{}' && go get -u ./... && go mod vendor && git add . && git commit -m \"vendor\" && git push\" \;"
@@ -184,4 +181,119 @@ alias dcdown="docker-compose down"
 
 # FZF
 alias fzp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}' --border --height='80%'"
+#direnv() {
+#  export $(grep -v '^#' "$1" | xargs)
+#}
 
+# Neovim keybindings cheat sheet
+nvimkeys() {
+  cat << 'EOF'
+╔══════════════════════════════════════════════════════════════════════╗
+║                    Neovim (LazyVim) Keybindings                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+GENERAL
+  <Space>           Leader key
+  <Space>l          Lazy plugin manager
+  <Space>:          Command history
+  <Space>qq         Quit all
+
+FILE NAVIGATION
+  <Space><Space>    Find files (FZF)
+  <Space>ff         Find files
+  <Space>fr         Recent files
+  <Space>fg         Git files
+  <Space>fb         Find buffers
+  <Space>fn         New file
+  <Space>fp         Find plugin files
+
+FILE EXPLORER (Neo-tree)
+  <Space>e          Toggle file explorer (sidebar)
+  <Space>E          Toggle explorer (root dir)
+  In Neo-tree:
+    a               Add file/folder
+    d               Delete
+    r               Rename
+    c               Copy
+    x               Cut
+    p               Paste
+    <Enter>         Open file/expand folder
+    <Esc>           Close explorer
+
+SEARCH (Telescope/Ripgrep)
+  <Space>/          Grep search in files
+  <Space>sg         Grep search text
+  <Space>sw         Search word under cursor
+  <Space>sG         Grep in cwd
+  <Space>sh         Search help
+  <Space>sk         Search keymaps
+  <Space>sc         Search commands
+
+BUFFERS & WINDOWS
+  <Space>bb         Switch buffers
+  <Space>bd         Delete buffer
+  Shift+h           Previous buffer
+  Shift+l           Next buffer
+  <Space>ww         Switch windows
+  <Space>wd         Delete window
+  <Space>w-         Split window below
+  <Space>w|         Split window right
+  Ctrl+h/j/k/l      Navigate between windows
+
+CODE NAVIGATION
+  gd                Go to definition
+  gr                Go to references
+  gI                Go to implementation
+  gy                Go to type definition
+  K                 Hover documentation
+  [d / ]d           Previous/next diagnostic
+  <Space>cd         Line diagnostics
+  <Space>cs         Document symbols
+  <Space>cS         Workspace symbols
+
+CODE ACTIONS
+  <Space>ca         Code action
+  <Space>cf         Format document/selection
+  <Space>cr         Rename symbol
+  <Space>co         Organize imports (TS)
+
+DIAGNOSTICS & ERRORS
+  <Space>xl         Location list
+  <Space>xq         Quickfix list
+  <Space>xx         Trouble (diagnostics)
+  <Space>xX         Trouble (workspace)
+
+TERMINAL
+  <Space>ft         Terminal (root dir)
+  <Space>fT         Terminal (cwd)
+  Ctrl+/            Toggle terminal
+  <Esc><Esc>        Exit terminal mode
+
+GIT
+  <Space>gg         Lazygit
+  <Space>gb         Git blame line
+  ]h / [h           Next/prev git hunk
+
+TABS
+  <Space><tab>l     Last tab
+  <Space><tab>f     First tab
+  <Space><tab><tab> New tab
+  <Space><tab>]     Next tab
+  <Space><tab>[     Previous tab
+  <Space><tab>d     Close tab
+
+EDITING
+  gcc               Comment/uncomment line
+  gc                Comment (visual mode)
+  <Space>ur         Toggle relative line numbers
+  <Space>uw         Toggle word wrap
+
+TIPS:
+  - FZF (Telescope): Use Ctrl+n/p or arrows to navigate, Enter to select
+  - Ripgrep searches: Results open in quickfix, use <Space>xq
+  - Sidebar (Neo-tree): Focus with <Space>e, close with q or <Esc>
+EOF
+}
+
+alias nvim-keys=nvimkeys
+alias vimkeys=nvimkeys
