@@ -1,0 +1,15 @@
+name: k99
+root: ~/
+
+on_project_start: aws sso login --profile ptuprod && sleep 2
+
+windows:
+  - ptuprod:
+      panes:
+        - export AWS_PROFILE=ptuprod && k9s --context arn:aws:eks:us-east-1:532796455123:cluster/vibe-infra-prod -n ptu
+  - ptunonprod:
+      panes:
+        - export AWS_PROFILE=ptunonprod && k9s --context arn:aws:eks:us-east-1:974932714082:cluster/vibe-infra-nonprod -n ptu
+  - nmprod:
+      panes:
+        - export AWS_PROFILE=prod && k9s --context arn:aws:eks:us-east-1:546087070894:cluster/vibe-neonmoose-prod -n all
