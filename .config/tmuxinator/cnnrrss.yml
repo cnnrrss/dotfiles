@@ -1,0 +1,14 @@
+name: cnnrrss
+root: ~/
+
+#on_project_start: $(sleep 1 && tmux select-pane -t cnnrrss:main.0 && tmux resize-pane -y 70%) &
+
+windows:
+  - tailscale:
+      layout: main-horizontal
+      panes:
+        - sudo tailscaled
+        - until tailscale status >/dev/null 2>&1; do sleep 2; done && ssh connor@<ip>
+  - mon:
+      panes:
+        - htop

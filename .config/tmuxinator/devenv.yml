@@ -1,0 +1,16 @@
+# ~/.config/tmuxinator/devenv-auto.yml
+# Automatically starts Claude Code in the right pane
+
+name: devenv-auto
+root: <%= ENV["PROJECT_DIR"] || "~/Projects" %>
+
+# Start with the editor window selected
+startup_window: dev
+startup_pane: 1
+
+windows:
+  - dev:
+      layout: even-horizontal
+      panes:
+        - nvim
+        - sleep 1 && claude .
